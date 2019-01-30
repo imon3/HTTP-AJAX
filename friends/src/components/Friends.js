@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import FriendForm from './FriendForm'
+
 class Friends extends React.Component {
     state = {
         friends: []
@@ -29,6 +31,7 @@ class Friends extends React.Component {
                         </div>
                     )
                 })}
+                <FriendForm />
             </div>
         )
     }
