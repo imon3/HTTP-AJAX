@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import FriendCard from './FriendCard'
 
-import FriendForm from './FriendForm'
-
-class Friends extends React.Component {
+class FriendsList extends React.Component {
     state = {
         friends: []
     }
@@ -24,17 +23,13 @@ class Friends extends React.Component {
             <div>
                 {this.state.friends.map(friend => {
                     return (
-                        <div key={friend.id}>
-                            <p>name: {friend.name}</p>
-                            <p>age: {friend.age}</p>
-                            <p>email: {friend.email}</p>
-                        </div>
+                        <FriendCard key={friend.id} friend={friend} />
                     )
                 })}
-                <FriendForm />
+
             </div>
         )
     }
 }
 
-export default Friends;
+export default FriendsList;

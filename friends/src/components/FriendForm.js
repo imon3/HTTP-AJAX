@@ -4,7 +4,7 @@ class FriendForm extends React.Component {
 
     render() {
         return (
-            <form>
+            <form className='friend-form'>
                 <div>
                     <label htmlFor='name'>Enter Name: </label>
                     <input id='name' type='text' name='name' />
@@ -12,7 +12,7 @@ class FriendForm extends React.Component {
 
                 <div>
                     <label htmlFor='age'>Enter Age: </label>
-                    <input id='age' type='text' name='age' />
+                    <input id='age' type='number' name='age' />
                 </div>
 
                 <div>

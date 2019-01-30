@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import './App.css';
-import Friends from './components/Friends'
+import FriendsList from './components/FriendsList'
+import FriendForm from './components/FriendForm'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Friends />
+        <Route exact path='/' component={FriendsList} />
+        <Route path='/form' component={FriendForm} />
       </div>
     );
   }
