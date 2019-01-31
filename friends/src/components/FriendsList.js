@@ -1,27 +1,16 @@
 import React from 'react';
-import axios from 'axios';
 import FriendCard from './FriendCard'
 
 class FriendsList extends React.Component {
-    state = {
-        friends: []
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:5000/friends')
-            .then(res => {
-                this.setState({
-                    friends: res.data
-                })
-            })
-            .catch(err => err)
+    constructor(props) {
+        super(props)
     }
 
     render() {
-        console.log(this.state.friends)
+        console.log(this.props.friends)
         return (
             <div>
-                {this.state.friends.map(friend => {
+                {this.props.friends.map(friend => {
                     return (
                         <FriendCard key={friend.id} friend={friend} />
                     )
