@@ -8,7 +8,12 @@ import FriendForm from './components/FriendForm'
 
 class App extends Component {
   state = {
-    friends: []
+    friends: [],
+    newFriend: {
+      name: '',
+      age: '',
+      email: ''
+    }
   }
 
   componentDidMount() {
@@ -16,25 +21,33 @@ class App extends Component {
       .then(res => {
         this.setState({
           friends: res.data,
-          newfriend: {
-            name: '',
-            age: '',
-            email: ''
-          }
         })
       })
       .catch(err => err)
   }
 
   handleChanges = e => {
+    e.persist();
     this.setState(prevState => {
       return {
         newfriend: {
-          ...prevState.newfriend,
+          ...prevState.newFriend,
           [e.target.name]: e.target.value
         }
       }
     })
+  }
+
+  addFriend = e => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/friends', this.state.newFriend)
+      .then(res => {
+        this.setState({
+          friends: res.data
+        });
+        this.props.history.push('/')
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -44,13 +57,17 @@ class App extends Component {
           exact path='/'
           render={props =>
             <FriendsList {...props}
-              friends={this.state.friends} />}
+              friends={this.state.friends}
+            />}
         />
         <Route
           path='/form'
           render={props =>
             <FriendForm {...props}
-              handleChanges={this.handleChanges} />}
+              newFriend={this.state.newFriend}
+              handleChanges={this.handleChanges}
+              addFriend={this.addFriend}
+            />}
         />
       </div>
     );
