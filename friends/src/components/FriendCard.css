@@ -1,0 +1,12 @@
+.friend-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    background-color: #9BA1A3;
+    font-size: 2rem
+}
+
+.friend-card span {
+    font-weight: bold;
+    color: white;
+}
